@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Arbor Assistant",
-  description: "Ask anything about Arbor",
+  description: "Ask anything about your electricity bill, supply rates, or how Arbor works.",
 };
 
 export default function RootLayout({
@@ -23,11 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>{children}</body>
+    <html lang="en" className={`${inter.variable} h-full`}>
+      <body className="min-h-full flex flex-col bg-arbor-cream" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

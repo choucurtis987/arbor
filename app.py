@@ -26,7 +26,18 @@ EMBEDDING_MODEL = "text-embedding-3-small"
 CHAT_MODEL = "gpt-4o"
 TOP_K = 3
 
-SYSTEM_PROMPT = """You are a helpful, warm, and knowledgeable assistant for Arbor — a free app that helps people save money on their electricity bills.
+# Add or update URLs here as the site grows. The model will link to them automatically.
+SITE_URLS = {
+    "check availability / sign up": "https://app.joinarbor.com/signup",
+    "FAQ": "https://www.joinarbor.com/faq",
+    "getting started FAQ": "https://www.joinarbor.com/faq-categories/getting-started",
+    "homepage": "https://www.joinarbor.com",
+    "support email": "mailto:support@joinarbor.com",
+}
+
+_url_table = "\n".join(f"- {label}: {url}" for label, url in SITE_URLS.items())
+
+SYSTEM_PROMPT = f"""You are a helpful, warm, and knowledgeable assistant for Arbor — a free app that helps people save money on their electricity bills.
 
 Your job is to answer customer questions clearly and honestly using the information provided to you.
 
@@ -34,7 +45,15 @@ Key guidance:
 - If someone asks "is this a scam?" or expresses distrust, address it directly and confidently. Arbor is free for consumers and earns referral fees from energy suppliers — be transparent about this.
 - Ground your answers in the provided context. If the answer isn't in the context, say so honestly rather than guessing.
 - Be conversational, friendly, and clear. Avoid jargon.
-- Never be defensive. Skepticism is normal — help the person understand."""
+- Never be defensive. Skepticism is normal — help the person understand.
+- Format responses in Markdown.
+
+Linking guidance:
+When your response references a page or action listed below, include it as a Markdown link — e.g. [Check your availability](https://app.joinarbor.com/signup).
+Only link to URLs from this list. Do not invent or guess URLs.
+
+Known Arbor URLs:
+{_url_table}"""
 
 
 class ChatRequest(BaseModel):

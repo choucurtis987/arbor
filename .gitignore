@@ -6,6 +6,9 @@ chroma_db/
 # Branding / local reference files
 branding/Arbor homepage.png
 
+# Design handoff — reference only, not production code
+design_handoff_arbor_chat/
+
 # Personal docs not needed for the app
 docs/Arbor Audit - Curtis Chou.pdf
 docs/agent-teams-reference.md
