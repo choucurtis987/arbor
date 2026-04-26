@@ -1,0 +1,22 @@
+.env
+chroma_db/
+.claude/
+.DS_Store
+
+# Branding / local reference files
+branding/Arbor homepage.png
+
+# Personal docs not needed for the app
+docs/Arbor Audit - Curtis Chou.pdf
+docs/agent-teams-reference.md
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Node
+node_modules/
+.next/
